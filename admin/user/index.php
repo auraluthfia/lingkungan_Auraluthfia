@@ -9,13 +9,13 @@
 <body>
 <header>
 <ul class="navbar">
-    <a href="/UKLSIJA/admin/user/index.php">User</a>
-    <a href="/UKLSIJA/admin/produk/index.php">Produk</a>
-    <a href="/UKLSIJA/admin/penjadwalan/index.php">Penjadwalan</a>
-    <a href="/UKLSIJA/admin/transaksi_produk/index.php">Transaksi Produk</a>
-    <a href="/UKLSIJA/admin/transaksi_pengambilan/index.php">Transaksi Pengambilan</a>
-    <a href="/UKLSIJA/admin/rating_produk/index.php">Rating Produk</a>
-    <a href="/UKLSIJA/admin/rating_pengambilan/index.php">Rating Pengambilan</a>
+    <a href="/SIJAUKL/admin/user/index.php">User</a>
+    <a href="/SIJAUKL/admin/produk/index.php">Produk</a>
+    <a href="/SIJAUKL/admin/penjadwalan/index.php">Penjadwalan</a>
+    <a href="/SIJAUKL/admin/transaksi_produk/index.php">Transaksi Produk</a>
+    <a href="/SIJAUKL/admin/transaksi_pengambilan/index.php">Transaksi Pengambilan</a>
+    <a href="/SIJAUKL/admin/rating_produk/index.php">Rating Produk</a>
+    <a href="/SIJAUKL/admin/rating_pengambilan/index.php">Rating Pengambilan</a>
 </ul>
 </header>
 <center><h1>Data Pengguna</h1><center>
@@ -48,7 +48,7 @@
                 <td><?php echo $data['nomorHP']; ?></td>
                 <td><?php echo $data['role']; ?></td>
                 <td><a href="hapus-user.php?id=<?php echo $data['ID'];  ?>" class="btn-delete" onClick="return confirm('Apakah anda yakin ingin menghapus data tersebut???')">Hapus</a>
-                <a href="edit-user.php?id=<?php echo $data['ID']; ?>" class="btn-edit">Edit</a></td>
+                <a href="edit_user.php?id=<?php echo $data['ID']; ?>" class="btn-edit">Edit</a></td>
             </tr>
             <?php } ?>
             </tbody>

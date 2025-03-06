@@ -42,7 +42,7 @@
     </div>
 
     <div class="video-container">
-        <video src="/UKLSIJA/user/img/videoukl.mp4" id="video-slider" loop autoplay muted></video>
+        <video src="/SIJAUKL/user/img/videoukl.mp4" id="video-slider" loop autoplay muted></video>
     </div>
 </section>
 <!--home section akhir-->
