@@ -1,0 +1,103 @@
+* {
+    font-family: "Trebuchet MS";
+  }
+h1 {
+    text-transform: uppercase;
+    color: #FF9F66;
+}
+table {
+  border: solid 1px #E5D0AC;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 70%;
+  margin: 10px auto 10px auto;
+}
+table thead th {
+    background-color: #E5D0AC;
+    border: solid 1px #E5D0AC;
+    color: black;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+}
+table tbody td {
+    border: solid 1px #E5D0AC;
+    color: black;
+    padding: 10px;
+    
+}
+.btn {
+      background-color: #6A9C89;
+      color: #fff;
+      padding: 10px;
+      text-decoration: none;
+      font-size: 12px;
+}
+.btn-delete {
+    background-color: #FF8989;
+    color: black;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 12px;
+}
+
+.btn-edit {
+    background-color: #B2EBF2;
+    color: black;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 12px;
+}
+
+.btn:hover, .btn-delete:hover, .btn-edit:hover {
+    opacity: 0.8;
+}
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+header{
+    position: fixed; 
+    top: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    background-color: #002379;
+    padding: 5px 0; 
+    margin: 0;
+}
+
+.logo{
+    font-size: 30px;
+    font-weight: 550;
+    letter-spacing: 1px;
+    color:black;
+}
+
+.navbar{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.navbar a{
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 10px 22px;
+    border-radius: 4px;
+    transition: ease .40s;
+    text-decoration: none;
+}
+
+.navbar a:hover{
+    color: #000000;
+}

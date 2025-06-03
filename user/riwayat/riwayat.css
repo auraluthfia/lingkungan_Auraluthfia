@@ -9,9 +9,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    text-transform: capitalize;
-    outline: none;
-    border: none;
     text-decoration: none;
     transition: all .2s linear;
 }
@@ -116,156 +113,124 @@ header .fa-bars{
     display: none;
 }
 
-.home{
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-flow: column;
-    position: relative;
-    z-index: 0;
+
+.transaction-history {
+    max-width: 800px;
+    margin : 100px auto;
+    padding: 20px;
+    background: #f5ead4;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
-.home .content{
+
+.transaction-history h2 {
     text-align: center;
+    color: var(--orange);
+    margin-top: 30px;
+    font-size: 40px;
+    border-bottom: 8px solid ;
 }
-.home .content h3{
-    font-size: 4.5rem;
-    color:#ffa500;
-    text-transform: uppercase;
-    text-shadow: 0 .3rem .5rem rgba(0, 0, 0, .1);   
+
+.transaction {
+    border-bottom: 1px solid black;
+    padding: 15px 0;
 }
-.home .content span{
-    font-size: 4.5rem;
+
+.transaction h3 {
+    text-align: justify;
+    font-size: 25px;
+    margin: 0 0 10px;
+    color: black;
+}
+
+.transaction p {
+    font-size: 16px;
+    margin: 5px 0;
+    color: brown;
+    font-weight: bold;
+}
+
+.transaction p span {
+    font-weight: bold;
+    color: blue;
+}
+
+.transaction form {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.transaction input[type="submit"] {
+    padding: 8px 16px;
+    border: none;
+    background: #28a745;
     color: #fff;
-    text-transform: uppercase;
-    text-shadow: 0 .3rem .5rem rgba(0, 0, 0, .1);   
-}
-.home .content p{
-    font-size: 2.5rem;
-    color: #fff;
-    padding: .5rem 0;
-}
-.home .video-container video{
-    position: absolute;
-    top: 0; left: 0;
-    z-index: -1;
-    height: 1005;
-    width: 100%;object-fit: cover;
-}
-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-/*toko*/
-.toko{
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-flow: column;
-    position: relative;
-    z-index: 0;
-    background-color: #fff;
-}
-.card-container{
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	margin-top: 5px;
-}
-.card{
-	width: 225px;
-	background-color: #F4DCBD;
-	border-radius: 8px;
-	overflow: hidden;
-	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-	margin: 20px;
-}
-.card img{
-	width: 100%;
-	height: 60%;
-}
-.card-content{
-	padding: 16px;
-}
-.card-content h3{
-	font-size: 20px;
-	margin-bottom: 8px;
-}
-.card-content p{
-	color: #666;
-	font-size: 15px;
-	line-height: 1.3;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
     text-align: right;
 }
-.card-content .btn{
-	display: inline-block;
-	padding: 8px 16px;
-	background-color: orange;
-	text-decoration: none;
-	border-radius: 5px; 
-	margin-top: 40px;
-	color: black;
-    text-align: right;
+
+.transaction input[type="submit"]:hover {
+    background: #218838;
 }
-/*bagian about*/
-.about{
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-flow: column;
-    position: relative;
-    z-index: 0;
-    background-color: #fff;
+
+.transaction input[type="submit"].btn-delete {
+    background: #dc3545;
 }
-.sesi-about{
-	width: 100%;
-	min-height: 100vh;
-	background: #fff;
+
+.transaction input[type="submit"].btn-delete:hover {
+    background: #c82333;
 }
-.container{
-	width: 80%;
-	display: block;
-	margin: auto;
-	padding-top: 50px;
+
+button {
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
 }
-.content{
-	float: left;
-	width: 55%;
+
+button[name="finish_produk"],
+button[name="cancel_produk"]{
+    background-color: #f0f0f0;
+    color: #333;
 }
-.image{
-	float: right;
-	width: 44%;
+
+button.rating-btn {
+    background-color: #c68842;
+    color: white;
+    transition: background-color 0.3s ease;
 }
-.image img{
-	width: 60%;
-	height: auto;
+
+button.rating-btn:hover {
+    background-color: #67420a;
 }
-.sesi-about .title{
-	text-transform: uppercase;
-	font-size: 20px;
-}
-.sesi-about .content h3{
-	margin-top: 20px;
-	color: orange;
-	font-size: 15px;
-}
-.sesi-about .content h2{
-	margin-top: 20px;
-	color: black;
-	font-size: 19px;
-}
-.sesi-about .content h1{
-	margin-top: 10px;
-	color: orange;
-	font-family: monospace;
-	font-size: 15px;
-	line-height: 1.5;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

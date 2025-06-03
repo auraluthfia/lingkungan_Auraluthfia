@@ -1,0 +1,78 @@
+* {
+    font-family: "Trebuchet MS";
+  }
+h1 {
+    text-transform: uppercase;
+    color: #FF9F66;
+}
+.bukti-form {
+    width: 400px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 2px solid #E5D0AC;
+    border-radius: 10px;
+    background-color: #f9f5f0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    font-family: "Trebuchet MS";
+}
+
+.bukti-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #FF9F66;
+    text-transform: uppercase;
+}
+
+.bukti-form input[type="text"],
+.bukti-form input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #E5D0AC;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.btn-submit {
+    background-color: #6A9C89;
+    color: #fff;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.btn-submit:hover {
+    opacity: 0.8;
+}
+.btn {
+      background-color: #6A9C89;
+      color: #fff;
+      padding: 10px;
+      text-decoration: none;
+      font-size: 12px;
+}
+.btn-delete {
+    background-color: #FF8989;
+    color: black;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 12px;
+}
+
+.btn-edit {
+    background-color: #B2EBF2;
+    color: black;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 12px;
+}
+
+.btn:hover, .btn-delete:hover, .btn-edit:hover {
+    opacity: 0.8;
+}
+

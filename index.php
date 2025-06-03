@@ -11,7 +11,7 @@
         <h1 class="title">Login</h1><br>
         <form class="form" action="login.php" method="post">
             <input type="email" name="email" placeholder="email" autocomplete="off" required>
-            <input type="password" name="Password" placeholder="password" autocomplete="off" required>
+            <input type="password" name="password" placeholder="password" autocomplete="off" required>
             <a href="login.php">
                <button class="button">Login</button>
             </a>

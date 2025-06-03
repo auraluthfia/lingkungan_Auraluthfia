@@ -8,9 +8,9 @@ if(!isset($_GET['id'])){
 
 $id = $_GET['id'];
 
-$deleteTransaksi = mysqli_query($conn, "DELETE FROM pengambilan WHERE ID=$id");
+$deleteUser = mysqli_query($conn, "DELETE FROM user WHERE ID=$id");
 
-if($deleteTransaksi) {
+if($deleteUser) {
     $result = mysqli_query($conn, "DELETE FROM user WHERE ID=$id");
 
     if($result) {

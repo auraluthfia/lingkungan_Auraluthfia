@@ -1,28 +1,21 @@
 <?php
-  // memanggil file koneksi.php untuk membuat koneksi
+
 include '../../koneksi.php';
+if (isset($_GET['id'])) {
 
-  // mengecek apakah di url ada nilai GET id
-  if (isset($_GET['id'])) {
-    // ambil nilai id dari url dan disimpan dalam variabel $id
     $id = ($_GET["id"]);
-
-    // menampilkan data dari database yang mempunyai id=$id
     $query = "SELECT * FROM user WHERE ID='$id'";
     $result = mysqli_query($conn, $query);
-    // jika data gagal diambil maka akan tampil error berikut
     if(!$result){
       die ("Query Error: ".mysqli_errno($conn).
          " - ".mysqli_error($conn));
     }
-    // mengambil data dari database
     $data = mysqli_fetch_assoc($result);
-      // apabila data tidak ada pada database maka akan dijalankan perintah ini
        if (!count($data)) {
           echo "<script>alert('Data tidak ditemukan pada database');window.location='index.php';</script>";
        }
   } else {
-    // apabila tidak ada data GET id pada akan di redirect ke index.php
+
     echo "<script>alert('Masukkan data id.');window.location='index.php';</script>";
   }         
   ?>
@@ -32,15 +25,14 @@ include '../../koneksi.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../edit.css">
-    <title>Data Edit</title>
+    <title>Halaman Admin</title>
 </head>
 <body>
 <center>
         <h1>Edit Pengguna <?php echo $data['nama']; ?></h1>
       <center>
-      <form method="POST" action="proses_edit_user.php" enctype="multipart/form-data" >
+      <form method="POST" action="proses_edit.php" enctype="multipart/form-data" >
       <section class="base">
-        <!-- menampung nilai id produk yang akan di edit -->
         <input name="id" value="<?php echo $data['ID']; ?>"  hidden />
         <div>
           <label>Nama </label>
@@ -66,7 +58,7 @@ include '../../koneksi.php';
                     </select>
         </div>
         <div>
-         <button type="submit">Simpan Perubahan</button>
+         <button type="submit" name="simpan" value="simpan">Simpan Perubahan</button>
         </div>
         </section>
       </form>

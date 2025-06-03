@@ -1,28 +1,18 @@
 <?php
-  // memanggil file koneksi.php untuk membuat koneksi
 include '../../koneksi.php';
-
-  // mengecek apakah di url ada nilai GET id
   if (isset($_GET['id'])) {
-    // ambil nilai id dari url dan disimpan dalam variabel $id
     $id = ($_GET["id"]);
-
-    // menampilkan data dari database yang mempunyai id=$id
     $query = "SELECT * FROM produk WHERE IDproduk='$id'";
     $result = mysqli_query($conn, $query);
-    // jika data gagal diambil maka akan tampil error berikut
     if(!$result){
       die ("Query Error: ".mysqli_errno($conn).
          " - ".mysqli_error($conn));
     }
-    // mengambil data dari database
     $data = mysqli_fetch_assoc($result);
-      // apabila data tidak ada pada database maka akan dijalankan perintah ini
        if (!count($data)) {
-          echo "<script>alert('Data tidak ditemukan pada database');window.location='index.php';</script>";
+          echo "<script>alert('Data Produk tidak ditemukan pada database');window.location='index.php';</script>";
        }
   } else {
-    // apabila tidak ada data GET id pada akan di redirect ke index.php
     echo "<script>alert('Masukkan data id.');window.location='index.php';</script>";
   }         
   ?>
@@ -38,7 +28,6 @@ include '../../koneksi.php';
       <center>
       <form method="POST" action="proses_edit.php" enctype="multipart/form-data" >
       <section class="base">
-        <!-- menampung nilai id produk yang akan di edit -->
         <input name="id" value="<?php echo $data['IDproduk']; ?>"  hidden />
         <div>
           <label>Nama Produk</label>
