@@ -29,13 +29,13 @@ h1 {
     width: 100%;
     padding: 8px;
     margin-bottom: 15px;
-    border: 1px solid #E5D0AC;
+    border: 1px solid black;
     border-radius: 5px;
     box-sizing: border-box;
 }
 
-.btn-submit {
-    background-color: #6A9C89;
+.btn-up {
+    background-color:#4cae4c ;
     color: #fff;
     padding: 10px;
     width: 100%;
@@ -45,34 +45,3 @@ h1 {
     cursor: pointer;
     transition: opacity 0.3s ease;
 }
-
-.btn-submit:hover {
-    opacity: 0.8;
-}
-.btn {
-      background-color: #6A9C89;
-      color: #fff;
-      padding: 10px;
-      text-decoration: none;
-      font-size: 12px;
-}
-.btn-delete {
-    background-color: #FF8989;
-    color: black;
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 12px;
-}
-
-.btn-edit {
-    background-color: #B2EBF2;
-    color: black;
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 12px;
-}
-
-.btn:hover, .btn-delete:hover, .btn-edit:hover {
-    opacity: 0.8;
-}
-

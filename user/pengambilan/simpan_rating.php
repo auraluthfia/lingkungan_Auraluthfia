@@ -8,59 +8,44 @@ if (!isset($_SESSION['email'])) {
 include '../koneksi.php';
 
 if (isset($_POST['IDpengambilan']) && isset($_POST['rating']) && isset($_POST['feedback'])) {
-    $IDpengambilan = $_POST['IDpengambilan'];
-    $rating = $_POST['rating'];
-    $feedback = $_POST['feedback'];
-    $email = $_SESSION['email'];
+    $IDpengambilan = (int)$_POST['IDpengambilan'];
+    $rating = mysqli_real_escape_string($conn, $_POST['rating']);
+    $feedback = mysqli_real_escape_string($conn, $_POST['feedback']);
+    $email = mysqli_real_escape_string($conn, $_SESSION['email']);
 
     // Ambil ID user dari email
-    $stmt = $conn->prepare("SELECT ID FROM user WHERE email = ?");
-    $stmt->bind_param("s", $email);
+    $queryUser = "SELECT ID FROM user WHERE email = '$email'";
+    $resultUser = mysqli_query($conn, $queryUser);
 
-    if ($stmt->execute()) {
-        $result = $stmt->get_result();
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $userID = $row['ID'];
+    if ($resultUser && mysqli_num_rows($resultUser) > 0) {
+        $userData = mysqli_fetch_assoc($resultUser);
+        $userID = $userData['ID'];
 
-            // Cek apakah IDpengambilan valid
-            $check = $conn->prepare("SELECT IDpengambilan FROM pengambilan WHERE IDpengambilan = ?");
-            $check->bind_param("i", $IDpengambilan);
+        // Cek apakah IDpengambilan valid
+        $queryCheck = "SELECT IDpengambilan FROM pengambilan WHERE IDpengambilan = $IDpengambilan";
+        $resultCheck = mysqli_query($conn, $queryCheck);
 
-            if ($check->execute()) {
-                $result = $check->get_result();
-                if ($result->num_rows > 0) {
-                    // Simpan rating
-                    $insert = $conn->prepare("INSERT INTO rating_pengelola (IDpengambilan, rating, feedback, ID) VALUES (?, ?, ?, ?)");
-                    $insert->bind_param("issi", $IDpengambilan, $rating, $feedback, $userID);
+        if ($resultCheck && mysqli_num_rows($resultCheck) > 0) {
+            // Simpan rating
+            $queryInsert = "INSERT INTO rating_pengelola (IDpengambilan, rating, feedback, ID) 
+                            VALUES ($IDpengambilan, '$rating', '$feedback', $userID)";
+            $resultInsert = mysqli_query($conn, $queryInsert);
 
-                    if ($insert->execute()) {
-                        header("Location: /SIJAUKL/user/index.php#ulasan");
-                        exit();
-                    } else {
-                        echo "Gagal memasukkan rating dan feedback.";
-                    }
-
-                    $insert->close();
-                } else {
-                    echo "Transaksi tidak ditemukan.";
-                }
+            if ($resultInsert) {
+                header("Location: /SIJAUKL/user/index.php#ulasan");
+                exit();
             } else {
-                echo "Gagal memeriksa IDpengambilan.";
+                echo "Gagal memasukkan rating dan feedback: " . mysqli_error($conn);
             }
-
-            $check->close();
         } else {
-            echo "Pengguna tidak ditemukan.";
+            echo "Transaksi tidak ditemukan.";
         }
     } else {
-        echo "Gagal menjalankan query user.";
+        echo "Pengguna tidak ditemukan.";
     }
-
-    $stmt->close();
 } else {
     echo "Data tidak lengkap.";
 }
 
-$conn->close();
+mysqli_close($conn);
 ?>

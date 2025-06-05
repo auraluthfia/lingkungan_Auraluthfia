@@ -60,9 +60,9 @@ if (isset($_POST['submit_bukti'])) {
         $newFileName = time() . '_' . preg_replace("/[^a-zA-Z0-9\.]/", "_", $fileName);
         $targetFilePath = $uploadDir . $newFileName;
 
-        $allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+        $allowedTypes = ['image/jpeg', 'image/png'];
         if (!in_array($fileType, $allowedTypes)) {
-            $message = "Format file tidak didukung. Gunakan JPG, PNG, atau PDF.";
+            $message = "Format file tidak didukung. Gunakan JPG, PNG.";
         } elseif ($fileSize > 5 * 1024 * 1024) {
             $message = "Ukuran file terlalu besar. Maksimal 5MB.";
         } else {
@@ -110,16 +110,13 @@ if (isset($_POST['submit_bukti'])) {
 </head>
 <body>
 <main>
+    <br>
     <center><h1>Upload Bukti Pengambilan</h1></center>
-    <?php if ($message): ?>
-        <p style="color: red;"><?= htmlspecialchars($message) ?></p>
-    <?php endif; ?>
-
     <form action="" method="POST" enctype="multipart/form-data" class="bukti-form">
         <input type="hidden" name="IDpenjadwalan" value="<?= htmlspecialchars($IDpenjadwalan) ?>">
-        <label for="foto_bukti">Pilih file bukti (JPG, PNG, PDF, max 5MB):</label><br>
+        <label for="foto_bukti">Pilih file bukti (JPG, PNG, max 5MB):</label><br>
         <input type="file" name="foto_bukti" id="foto_bukti" accept=".jpg,.jpeg,.png,.pdf" required><br><br>
-        <button type="submit" name="submit_bukti">Upload Bukti</button>
+        <input type="submit" name="submit_bukti" value="Upload Bukti" class="btn-up">
     </form>
 </main>
 </body>

@@ -158,10 +158,10 @@ button {
     cursor: pointer;
     font-size: 16px;
 }
-/* Tombol Rating */
+/* Tombol input */
 button.input-btn {
     background-color: #17a2b8;
-    color: white;
+    color: black;
     transition: background-color 0.3s ease;
 }
 
@@ -169,38 +169,27 @@ button.input-btn:hover {
     background-color: #17a2b8;
 }
 
-/* Tombol Upload Bukti */
-button.upload-bukti {
-    background-color: #007bff;
-    color: white;
-}
-
-button.upload-bukti:hover {
-    background-color: #0056b3;
-}
-
-/* Tombol Batalkan */
-input[type="submit"].delete-btn,
-.delete-btn {
-    background-color: #dc3545;
-    color: white;
-}
-
-input[type="submit"].delete-btn:hover,
-.delete-btn:hover {
-    background-color: #c82333;
-}
-
 /* Tombol Rating */
 button.rating-btn {
     background-color: #c68842;
-    color: white;
+    color: black;
     transition: background-color 0.3s ease;
 }
 
 button.rating-btn:hover {
     background-color: #67420a;
 }
+.btn-delete{
+    background-color: #ffa500;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    color: black;
+}
+
 
 footer {
     background: #D9D9D9;

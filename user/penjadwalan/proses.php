@@ -77,51 +77,49 @@ $result_penjadwalan = $stmt_penjadwalan->get_result();
 
 <div class="transaction-history">
     <h2>Penjadwalan dan Pengambilan Minyak</h2>
-    <?php if ($result_penjadwalan->num_rows > 0): ?>
-        <?php while ($row = $result_penjadwalan->fetch_assoc()): ?>
-            <?php
-                // Ambil IDpengambilan dari tabel pengambilan berdasar IDpenjadwalan
-                $IDpenjadwalan = $row['IDpenjadwalan'];
-                $query_pengambilan = "SELECT IDpengambilan FROM pengambilan WHERE IDpenjadwalan = ?";
-                $stmt_pengambilan = $conn->prepare($query_pengambilan);
-                $stmt_pengambilan->bind_param("i", $IDpenjadwalan);
-                $stmt_pengambilan->execute();
-                $result_pengambilan = $stmt_pengambilan->get_result();
-                $row_pengambilan = $result_pengambilan->fetch_assoc();
-                $IDpengambilan = $row_pengambilan['IDpengambilan'] ?? null;
-            ?>
-            <div class='transaction'>
-                <p>Email: <span><?= htmlspecialchars($row['email']) ?></span></p>
-                <p>Jumlah: <span><?= htmlspecialchars($row['jumlah']) ?></span></p>
-                <p>Alamat: <span><?= htmlspecialchars($row['alamat']) ?></span></p>
-                <p>Tanggal: <span><?= htmlspecialchars($row['tanggal']) ?></span></p>
-                <p>Status: <span><?= htmlspecialchars($row['status']) ?></span></p>
-                <p>Catatan: <span><?= htmlspecialchars($row['catatan']) ?></span></p>
+    <?php if (mysqli_num_rows($result_penjadwalan) > 0): ?>
+    <?php while ($row = mysqli_fetch_assoc($result_penjadwalan)): ?>
+        <?php
+            // Ambil IDpengambilan dari tabel pengambilan berdasar IDpenjadwalan
+            $IDpenjadwalan = (int)$row['IDpenjadwalan'];
+            $query_pengambilan = "SELECT IDpengambilan FROM pengambilan WHERE IDpenjadwalan = $IDpenjadwalan";
+            $result_pengambilan = mysqli_query($conn, $query_pengambilan);
+            $row_pengambilan = mysqli_fetch_assoc($result_pengambilan);
+            $IDpengambilan = $row_pengambilan['IDpengambilan'] ?? null;
+        ?>
+        <div class='transaction'>
+            <p>Email: <span><?= htmlspecialchars($row['email']) ?></span></p>
+            <p>Jumlah: <span><?= htmlspecialchars($row['jumlah']) ?></span></p>
+            <p>Alamat: <span><?= htmlspecialchars($row['alamat']) ?></span></p>
+            <p>Tanggal: <span><?= htmlspecialchars($row['tanggal']) ?></span></p>
+            <p>Status: <span><?= htmlspecialchars($row['status']) ?></span></p>
+            <p>Catatan: <span><?= htmlspecialchars($row['catatan']) ?></span></p>
 
-                <?php if ($row['status'] === 'pending'): ?>
-                    <a href="/SIJAUKL/user/pengambilan/index.php?IDpenjadwalan=<?= $row['IDpenjadwalan'] ?>">
-                        <button class='input-btn'>Input Bukti</button>
-                    </a>
-                <?php elseif ($row['status'] === 'selesai' && $IDpengambilan): ?>
-                    <p><strong>Status selesai.</strong> Terima kasih!</p>
-                    <a href="/SIJAUKL/user/pengambilan/rating_pengelola.php?IDpengambilan=<?= $IDpengambilan ?>">
-                        <button class='rating-btn'>Beri Rating</button>
-                    </a>
-                <?php elseif ($row['status'] === 'canceled'): ?>
-                    <p><em>Penjadwalan dibatalkan</em></p>
-                <?php endif; ?>
+            <?php if ($row['status'] === 'pending'): ?>
+                <a href="/SIJAUKL/user/pengambilan/index.php?IDpenjadwalan=<?= $row['IDpenjadwalan'] ?>">
+                    <button class='input-btn'>Input Bukti</button>
+                </a>
+            <?php elseif ($row['status'] === 'selesai' && $IDpengambilan): ?>
+                <p><strong>Status selesai.</strong> Terima kasih!</p>
+                <a href="/SIJAUKL/user/pengambilan/rating_pengelola.php?IDpengambilan=<?= $IDpengambilan ?>">
+                    <button class='rating-btn'>Beri Rating</button>
+                </a>
+            <?php elseif ($row['status'] === 'canceled'): ?>
+                <p><em>Penjadwalan dibatalkan</em></p>
+            <?php endif ?>
 
-                <?php if (in_array($row['status'], ['pending', 'pengambilan'])): ?>
-                    <form method="POST" action="">
-                        <input type="hidden" name="IDpenjadwalan" value="<?= $row['IDpenjadwalan'] ?>">
-                        <input type="submit" name="cancel_penjadwalan" value="Batalkan" class="btn btn-delete" onclick="return confirm('Yakin ingin membatalkan penjadwalan ini?');">
-                    </form>
-                <?php endif; ?>
-            </div>
-        <?php endwhile; ?>
-    <?php else: ?>
-        <p>Belum ada penjadwalan.</p>
-    <?php endif; ?>
+            <?php if (in_array($row['status'], ['pending', 'pengambilan'])): ?>
+                <form method="POST" action="">
+                    <input type="hidden" name="IDpenjadwalan" value="<?= $row['IDpenjadwalan'] ?>">
+                    <input type="submit" name="cancel_penjadwalan" value="Batalkan" class="btn-delete" onclick="return confirm('Yakin ingin membatalkan penjadwalan ini?');">
+                </form>
+            <?php endif; ?>
+        </div>
+    <?php endwhile; ?>
+<?php else: ?>
+    <p>Belum ada penjadwalan.</p>
+<?php endif; ?>
+
 </div>
 
 <footer>
