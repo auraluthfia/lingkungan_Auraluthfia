@@ -9,37 +9,33 @@ include '../koneksi.php';
 
 $username = $_SESSION['email'];
 
-$queryUser = "SELECT ID FROM user WHERE email = ?";
-$stmtUser = $conn->prepare($queryUser);
-$stmtUser->bind_param("s", $username);
-$stmtUser->execute();
-$resultUser = $stmtUser->get_result();
+// Ambil ID user dari email
+$queryUser = "SELECT ID FROM user WHERE email = '$username'";
+$resultUser = mysqli_query($conn, $queryUser);
 
-if ($resultUser->num_rows === 0) {
+if (mysqli_num_rows($resultUser) === 0) {
     die("User tidak ditemukan.");
 }
 
-$userData = $resultUser->fetch_assoc();
+$userData = mysqli_fetch_assoc($resultUser);
 $IDuser = $userData['ID'];
 
+// Pastikan IDpenjadwalan ada
 if (!isset($_GET['IDpenjadwalan'])) {
     die("ID penjadwalan tidak diberikan.");
 }
 
 $IDpenjadwalan = (int)$_GET['IDpenjadwalan'];
 
-// Cek penjadwalan milik user & status pending atau pengambilan
-$queryPenjadwalan = "SELECT status FROM penjadwalan WHERE IDpenjadwalan = ? AND ID = ?";
-$stmtPenjadwalan = $conn->prepare($queryPenjadwalan);
-$stmtPenjadwalan->bind_param("ii", $IDpenjadwalan, $IDuser);
-$stmtPenjadwalan->execute();
-$resultPenjadwalan = $stmtPenjadwalan->get_result();
+// Cek penjadwalan milik user & status valid
+$queryPenjadwalan = "SELECT status FROM penjadwalan WHERE IDpenjadwalan = $IDpenjadwalan AND ID = $IDuser";
+$resultPenjadwalan = mysqli_query($conn, $queryPenjadwalan);
 
-if ($resultPenjadwalan->num_rows === 0) {
+if (mysqli_num_rows($resultPenjadwalan) === 0) {
     die("Penjadwalan tidak ditemukan atau bukan milik Anda.");
 }
 
-$statusData = $resultPenjadwalan->fetch_assoc();
+$statusData = mysqli_fetch_assoc($resultPenjadwalan);
 $status = $statusData['status'];
 
 if (!in_array($status, ['pending', 'pengambilan'])) {
@@ -74,36 +70,26 @@ if (isset($_POST['submit_bukti'])) {
                 $tanggal = date('Y-m-d H:i:s');
 
                 // Cek apakah sudah ada record pengambilan
-                $checkQuery = "SELECT IDpengambilan FROM pengambilan WHERE ID = ? AND IDpenjadwalan = ?";
-                $stmtCheck = $conn->prepare($checkQuery);
-                $stmtCheck->bind_param("ii", $IDuser, $IDpenjadwalan);
-                $stmtCheck->execute();
-                $resultCheck = $stmtCheck->get_result();
+                $checkQuery = "SELECT IDpengambilan FROM pengambilan WHERE ID = $IDuser AND IDpenjadwalan = $IDpenjadwalan";
+                $resultCheck = mysqli_query($conn, $checkQuery);
 
-                if ($resultCheck->num_rows > 0) {
-                    $row = $resultCheck->fetch_assoc();
+                if (mysqli_num_rows($resultCheck) > 0) {
+                    $row = mysqli_fetch_assoc($resultCheck);
                     $IDpengambilan = $row['IDpengambilan'];
 
-                    $updateQuery = "UPDATE pengambilan SET status = 'selesai', foto_bukti = ?, tanggal_diambil = ? WHERE IDpengambilan = ?";
-                    $stmtUpdate = $conn->prepare($updateQuery);
-                    $stmtUpdate->bind_param("ssi", $targetFilePath, $tanggal, $IDpengambilan);
-                    $stmtUpdate->execute();
+                    $updateQuery = "UPDATE pengambilan SET status = 'selesai', foto_bukti = '$targetFilePath', tanggal_diambil = '$tanggal' WHERE IDpengambilan = $IDpengambilan";
+                    mysqli_query($conn, $updateQuery);
                 } else {
-                    $insertQuery = "INSERT INTO pengambilan (ID, IDpenjadwalan, status, foto_bukti, tanggal_diambil) VALUES (?, ?, 'selesai', ?, ?)";
-                    $stmtInsert = $conn->prepare($insertQuery);
-                    $stmtInsert->bind_param("iiss", $IDuser, $IDpenjadwalan, $targetFilePath, $tanggal);
-                    $stmtInsert->execute();
+                    $insertQuery = "INSERT INTO pengambilan (ID, IDpenjadwalan, status, foto_bukti, tanggal_diambil) VALUES ($IDuser, $IDpenjadwalan, 'selesai', '$targetFilePath', '$tanggal')";
+                    mysqli_query($conn, $insertQuery);
                 }
 
                 // Update status penjadwalan jadi 'selesai'
-                $updatePenjadwalan = "UPDATE penjadwalan SET status = 'selesai' WHERE IDpenjadwalan = ?";
-                $stmtPenjadwalanUpdate = $conn->prepare($updatePenjadwalan);
-                $stmtPenjadwalanUpdate->bind_param("i", $IDpenjadwalan);
-                $stmtPenjadwalanUpdate->execute();
+                $updatePenjadwalan = "UPDATE penjadwalan SET status = 'selesai' WHERE IDpenjadwalan = $IDpenjadwalan";
+                mysqli_query($conn, $updatePenjadwalan);
 
                 header("Location: /SIJAUKL/user/penjadwalan/proses.php");
                 exit();
-
             } else {
                 $message = "Terjadi kesalahan saat upload file.";
             }
@@ -112,9 +98,7 @@ if (isset($_POST['submit_bukti'])) {
         $message = "File bukti harus diupload.";
     }
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
