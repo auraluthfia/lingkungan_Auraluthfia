@@ -21,6 +21,7 @@
         <a href="/SIJAUKL/user/index.php#home">Home</a>
         <a href="/SIJAUKL/user/index.php#toko">Toko kami</a>
         <a href="/SIJAUKL/user/index.php#about">Tentang kami</a>
+        <a href="/SIJAUKL/user/index.php#ulasan">Ulasan</a>
     </nav>
 
     <div class="icons">

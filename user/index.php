@@ -36,7 +36,9 @@ session_start();
     </nav>
 
     <div class="icons">
-		<a href="/SIJAUKL/user/penjadwalan/proses.php"><i class="fas fa-bell "></i></a>
+        <?php if (isset($_SESSION['ID'])): ?>
+        <a href="/SIJAUKL/user/penjadwalan/proses.php"><i class="fas fa-bell "></i></a>
+    <?php endif; ?>
         <a href="/SIJAUKL/user/profil/profil.php"><i class="fas fa-user "></i></a>
     </div>
 </header>
