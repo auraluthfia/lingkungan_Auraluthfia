@@ -20,6 +20,7 @@ if ($login) {
         } else if ($data['role'] == "user") {
             $_SESSION['email'] = $email;
             $_SESSION['role'] = "user";
+             $_SESSION['ID'] = $data['ID'];
             header("Location: user/index.php");
         } else {
             header("Location: index.php");

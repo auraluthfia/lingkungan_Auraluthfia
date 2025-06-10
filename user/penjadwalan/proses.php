@@ -65,9 +65,9 @@ $result_penjadwalan = $stmt_penjadwalan->get_result();
     <a href="/SIJAUKL/user/index.php#home">Home</a>
     <a href="/SIJAUKL/user/index.php#toko">Toko kami</a>
     <a href="/SIJAUKL/user/index.php#about">Tentang kami</a>
+    <a href="/SIJAUKL/user/index.php#ulasan">Ulasan</a>
     <a href="/SIJAUKL/user/penjadwalan/index.php">Penjadwalan</a>
     <a href="/SIJAUKL/user/riwayat/index.php">Riwayat</a>
-    <a href="/SIJAUKL/user/index.php#ulasan">Ulasan</a>
 </nav>
 <div class="icons">
     <a href="/SIJAUKL/user/penjadwalan/proses.php"><i class="fas fa-bell"></i></a>

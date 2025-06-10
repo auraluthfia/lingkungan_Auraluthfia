@@ -58,10 +58,13 @@ include '../../koneksi.php';
         <td><?php echo number_format($data['total'],0,',','.'); ?></td>
         <td><?php echo $data['status']; ?></td>
         <td><?php echo $data['metode_pengiriman']?></td>
-        <td>
-              <a href="edit_transaksi.php?id=<?php echo $data['IDpesanan']; ?>" class="btn-edit">Edit</a>
-              <a href="proses_hapus.php?id=<?php echo $data['IDpesanan']; ?>" class="btn-delete" onclick="return confirm('Anda yakin akan menghapus data ini?')">Hapus</a>
-          </td>    
+       <td>
+  <div class="action-buttons">
+    <a href="edit_transaksi.php?id=<?= $data['IDpesanan']; ?>" class="btn-edit">Edit</a>
+    <a href="proses_hapus.php?id=<?= $data['IDpesanan']; ?>" class="btn-delete" onclick="return confirm('Yakin hapus?')">Hapus</a>
+  </div>
+</td>
+  
     </tr>
         <?php } ?>
     </tbody>

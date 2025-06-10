@@ -4,10 +4,10 @@ include '../../koneksi.php';
 if (isset($_GET['id'])) {
 
     $id = ($_GET["id"]);
-    $query = "SELECT penjadwalan.IDpenjadwalan, penjadwalan.alamat, penjadwalan.jumlah
+    $query = "SELECT penjadwalan.IDpenjadwalan, penjadwalan.alamat, penjadwalan.jumlah, penjadwalan.tanggal, penjadwalan.catatan,penjadwalan.status,user.email,jadwal.hari,jadwal.waktu, penjadwalan.status
     FROM penjadwalan
-    JOIN jadwal ON pesanan.IDproduk = produk.IDproduk
-    JOIN user ON pesanan.ID = user.ID
+    JOIN jadwal ON penjadwalan.IDjadwal = jadwal.IDjadwal
+    JOIN user ON penjadwalan.ID = user.ID
     WHERE penjadwalan.IDpenjadwalan = '$id'";
 
     $result = mysqli_query($conn, $query);
@@ -34,7 +34,7 @@ if (isset($_GET['id'])) {
 </head>
 <body>
 <center>
-        <h1>Edit Pesanan <?php echo $data['email']; ?></h1>
+        <h1>Edit Pengambilan <?php echo $data['email']; ?></h1>
       <center>
       <form method="POST" action="proses_edit.php" enctype="multipart/form-data" >
       <section class="base">
@@ -44,8 +44,12 @@ if (isset($_GET['id'])) {
           <?php echo $data['email']; ?>
         </div>
         <div>
-          <label>jadwal</label>
-        <?php echo $data['ari,'];?>
+          <label>Hari</label>
+        <?php echo $data['hari'];?>
+        </div>
+        <div>
+          <label>Waktu</label>
+        <?php echo $data['waktu'];?>
         </div>
          <div>
           <label>Tanggal</label>
@@ -55,15 +59,15 @@ if (isset($_GET['id'])) {
         <label>Jumlah</label>
          <?php echo $data['jumlah']; ?>
         </div>
-        <label>Total</label>
-        <?php echo $data['total'];?>
+        <label>Catatan</label>
+        <?php echo $data['catatan'];?>
         </div>
         <div>
           <label for="status">Status</label>
           <select name="status" required>
            <option disabled selected><?php echo $data['status']; ?></option>
           <option value="canceled">canceled</option>
-          <option value="successful">successful</option>
+          <option value="selesai">selesai</option>
         </select>
         </div>
         <div>

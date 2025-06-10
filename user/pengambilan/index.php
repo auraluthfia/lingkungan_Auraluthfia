@@ -105,12 +105,36 @@ if (isset($_POST['submit_bukti'])) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Upload Bukti Pengambilan - Minyak Jelantah UKL</title>
-    <link rel="stylesheet" href="../style-user.css" />
-    <link rel="stylesheet" href="pengambilan.css" />
-</head>
+<!-- font awesome cdn link-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="pengambilan.css">
+    <title>Penjadwalan</title>
+   </head>
 <body>
+
+<!--header section awal-->
+<header>
+    <input type="checkbox" name="" id="toggler">
+    <label for="toggler" class="fas fa-bars">
+	</label>
+    <a href="#" class="logo"><span>M</span>ijel</a>
+
+    <nav class="navbar">
+    <a href="/SIJAUKL/user/index.php#home">Home</a>
+    <a href="/SIJAUKL/user/index.php#toko">Toko kami</a>
+    <a href="/SIJAUKL/user/index.php#about">Tentang kami</a>
+    <a href="/SIJAUKL/user/index.php#ulasan">Ulasan</a>
+    <a href="/SIJAUKL/user/penjadwalan/index.php">Penjadwalan</a>
+    <a href="/SIJAUKL/user/riwayat/index.php">Riwayat</a>
+    </nav>
+
+    <div class="icons">
+		<a href="/SIJAUKL/user/penjadwalan/proses.php"><i class="fas fa-bell "></i></a>
+        <a href="/SIJAUKL/user/profil/profil.php"><i class="fas fa-user "></i></a>
+    </div>
+</header>
+<!--header section akhir-->
 <main>
-    <br>
     <center><h1>Upload Bukti Pengambilan</h1></center>
     <form action="" method="POST" enctype="multipart/form-data" class="bukti-form">
         <input type="hidden" name="IDpenjadwalan" value="<?= htmlspecialchars($IDpenjadwalan) ?>">
@@ -119,5 +143,39 @@ if (isset($_POST['submit_bukti'])) {
         <input type="submit" name="submit_bukti" value="Upload Bukti" class="btn-up">
     </form>
 </main>
+<!--footer section awal -->
+<footer>
+	<div class="footer">
+		<div class="footer-content">
+			<h3>Contact Us</h3>
+			<p>Email:aurelukltelkom1@gmail.com</p>
+			<p>Phone:+62 881-0360-11635</p>
+			<p>Address: SMK Telkom Sidoarjo</p>
+		</div>
+		<div class="footer-content">
+			<h3>Quick Links</h3>
+			<ul class="list">
+				<li><a href="/SIJAUKL/user/index.php#home">Home</a></li>
+				<li><a href="/SIJAUKL/user/index.php#toko">Toko Kami</a></li>
+				<li><a href="/SIJAUKL/user/index.php#about">Tentang Kami</a></li>
+                <li><a href="/SIJAUKL/user/index.php#ulasan">Ulasan</a></li>
+                <li><a href="/SIJAUKL/user/penjadwalan/index.php">Penjadwalan</a></li>
+                <li><a href="/SIJAUKL/user/riwayat/index.php">Riwayat</a></li>
+			</ul>
+		</div>
+		<div class="footer-content">
+			<div class="social-icons">
+			<h3>Follow Us</h3>
+			<li><a href=""><i class="fab fa-instagram"></i></a></li>
+			<li><a href="https://github.com/auraluthfia"><i class="fab fa-github"></i></a></li>
+			<li><a href=""><i class="fab fa-linkedin"></i></a></li>
+		</div>
+	</div>
+	</div>
+	<div class="bottom-bar">
+		<p>Created By Aura Luthfia &copy; 2025</p>
+	</div>
+</footer>
+<!--section footer akhir-->
 </body>
 </html>

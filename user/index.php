@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,9 +28,11 @@
         <a href="#home">Home</a>
         <a href="#toko">Toko kami</a>
         <a href="#about">Tentang kami</a>
-		<a href="/SIJAUKL/user/penjadwalan/index.php">Penjadwalan</a>
+        <a href="#ulasan">Ulasan</a>
+	<?php if (isset($_SESSION['ID'])): ?>
+        <a href="/SIJAUKL/user/penjadwalan/index.php">Penjadwalan</a>
         <a href="/SIJAUKL/user/riwayat/index.php">Riwayat</a>
-		<a href="#ulasan">Ulasan</a>
+    <?php endif; ?>
     </nav>
 
     <div class="icons">
@@ -173,9 +179,11 @@
 				<li><a href="#home">Home</a></li>
 				<li><a href="#toko">Toko Kami</a></li>
 				<li><a href="#about">Tentang Kami</a></li>
+                <li><a href="#ulasan">Ulasan</a></li>
+            <?php if (isset($_SESSION['ID'])): ?>
                 <li><a href="/SIJAUKL/user/penjadwalan/index.php">Penjadwalan</a></li>
                 <li><a href="/SIJAUKL/user/riwayat/index.php">Riwayat</a></li>
-				<li><a href="#ulasan">Ulasan</a></li>
+            <?php endif; ?>
 			</ul>
 		</div>
 		<div class="footer-content">

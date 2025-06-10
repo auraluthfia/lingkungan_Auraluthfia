@@ -22,8 +22,9 @@ include '../../koneksi.php';
     <a href="/SIJAUKL/user/index.php">Home</a>
         <a href="/SIJAUKL/user/index.php #toko">Toko kami</a>
         <a href="/SIJAUKL/user/index.php #about">Tentang kami</a>
-        <a href="/SIJAUKL/user/riwayat/index.php">Riwayat</a>
         <a href="/SIJAUKL/user/index.php#ulasan">Ulasan</a>
+         <a href="/SIJAUKL/user/penjadwalan/index.php">Penjadwalan</a>
+        <a href="/SIJAUKL/user/riwayat/index.php">Riwayat</a>
     </nav>
     <div class="icons">
         <a href="/SIJAUKL/user/penjadwalan/proses.php"><i class="fas fa-bell"></i></a>
@@ -78,10 +79,12 @@ include '../../koneksi.php';
 		<div class="footer-content">
 			<h3>Quick Links</h3>
 			<ul class="list">
-				<li><a href="#home">Home</a></li>
-				<li><a href="#toko">Toko Kami</a></li>
-				<li><a href="#about">Tentang Kami</a></li>
-				<li><a href="">Riwayat</a></li>
+				<li><a href="/SIJAUKL/user/index.php#home">Home</a></li>
+				<li><a href="/SIJAUKL/user/index.php#toko">Toko Kami</a></li>
+				<li><a href="/SIJAUKL/user/index.php#about">Tentang Kami</a></li>
+                <li><a href="/SIJAUKL/user/index.php#ulasan">Ulasan</a></li>
+                <li><a href="/SIJAUKL/user/penjadwalan/index.php">Penjadwalan</a></li>
+                <li><a href="/SIJAUKL/user/riwayat/index.php">Riwayat</a></li>
 			</ul>
 		</div>
 		<div class="footer-content">
