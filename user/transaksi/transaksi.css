@@ -139,8 +139,10 @@ header .fa-bars{
 
 .product-details p {
     font-size: 15px;
+    max-width: 500px;
     margin-bottom: 0;
     font-weight: bold;
+    color: brown;
 }
 
 form {

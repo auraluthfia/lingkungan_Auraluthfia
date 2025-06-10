@@ -21,7 +21,7 @@ $ID = $userData['ID'];
 if (isset($_GET['id'])) {
     $IDproduk = $_GET['id'];
     $query = "
-        SELECT produk.IDproduk, produk.nama_produk, produk.harga, produk.gambar 
+        SELECT produk.IDproduk, produk.nama_produk, produk.harga, produk.gambar,produk.deskripsi_produk
         FROM produk 
         WHERE produk.IDproduk = '$IDproduk'
     ";
@@ -67,8 +67,8 @@ if (isset($_GET['id'])) {
     <h2><?php echo $row['nama_produk']; ?></h2>
   <center><img src="/SIJAUKL/admin/produk/gambar/<?php echo $row['gambar']; ?>" alt="<?php echo $row['nama_produk']; ?>"> </center> 
     <p>Harga:<?php echo number_format($row['harga'],0,',','.'); ?></p>
+    <p>Deskripsi: <br> <?php echo $row['deskripsi_produk']; ?></p>
     <p>Email:<?php echo $userData['email']; ?></p>
-
     <form action="proses_pesan.php" method="POST">
         <input type="hidden" name="ID" value="<?php echo $ID; ?>">
         <input type="hidden" name="IDproduk" value="<?php echo $row['IDproduk']; ?>">
