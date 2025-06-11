@@ -4,7 +4,7 @@ include '../../koneksi.php';
 if (isset($_GET['id'])) {
 
     $id = ($_GET["id"]);
-    $query = "SELECT pesanan.IDpesanan, produk.nama_produk, pesanan.total, user.email, pesanan.jumlah, pesanan.tanggal, pesanan.status, pesanan.metode_pengiriman 
+    $query = "SELECT pesanan.IDpesanan, produk.nama_produk, pesanan.total, user.email, pesanan.jumlah, pesanan.tanggal, pesanan.status, pesanan.metode_pembayaran 
     FROM pesanan
     JOIN produk ON pesanan.IDproduk = produk.IDproduk
     JOIN user ON pesanan.ID = user.ID
@@ -55,8 +55,13 @@ if (isset($_GET['id'])) {
         <label>Jumlah</label>
          <?php echo $data['jumlah']; ?>
         </div>
+        <div>
         <label>Total</label>
         <?php echo number_format($data['total'],0,',','.'); ?>
+        </div>
+        <div>
+        <label>Metode Pembayaran</label>
+        <?php echo $data['metode_pembayaran']; ?>
         </div>
         <div>
           <label for="status">Status</label>

@@ -65,22 +65,26 @@ if (isset($_GET['id'])) {
 
 <div class="product-details">
     <h2><?php echo $row['nama_produk']; ?></h2>
-  <center><img src="/SIJAUKL/admin/produk/gambar/<?php echo $row['gambar']; ?>" alt="<?php echo $row['nama_produk']; ?>"> </center> 
-    <p>Harga:<?php echo number_format($row['harga'],0,',','.'); ?></p>
-    <p>Deskripsi: <br> <?php echo $row['deskripsi_produk']; ?></p>
-    <p>Email:<?php echo $userData['email']; ?></p>
+  <center><img src="/SIJAUKL/admin/produk/gambar/<?php echo $row['gambar']; ?>" alt="<?php echo $row['nama_produk']; ?>"> </center> <br>
+    <p>Harga: <br> <?php echo number_format($row['harga'],0,',','.'); ?></p><br>
+    <p>Deskripsi: <br> <?php echo $row['deskripsi_produk']; ?></p><br>
+    <p>Email: <br> <?php echo $userData['email']; ?></p>
     <form action="proses_pesan.php" method="POST">
         <input type="hidden" name="ID" value="<?php echo $ID; ?>">
         <input type="hidden" name="IDproduk" value="<?php echo $row['IDproduk']; ?>">
         <label for="jumlah">Jumlah Pesanan:</label>
         <input type="number" id="jumlah" name="jumlah" value="1" min="1" required>
         <label for="tanggal">Tanggal:</label>
-        <input type="date" id="tanggal" name="tanggal" required><br>
-        <label for="tanggal">Metode Pengiriman:</label>
+        <input type="date" id="tanggal" name="tanggal" required>
+        <label for="alamat">Alamat:</label>
+        <input type="text" id="alamat" name="alamat" required>
+        <label for="tanggal">Metode Pembayaran:</label>
         <div class="metode">
-            <input type="radio" id="metode_pengiriman" name="metode_pengiriman" value="online"  required><label for="online" title="online">Online</label>
-            <input type="radio" id="metode_pengiriman" name="metode_pengiriman" value="offline" required><label for="offline" title="offline">Offline</label>
-    </div>
+            <input type="radio" id="metode_pembayaran" name="metode_pembayaran" value="dana"  required><label><img src="/SIJAUKL/user/img/dana.jpg" alt="dana"></label>
+            <input type="radio" id="metode_pembayaran" name="metode_pembayaran" value="bca" required><label><img src="/SIJAUKL/user/img/bca.jpg" alt="bca"></label>
+            <input type="radio" id="metode_pembayaran" name="metode_pembayaran" value="mandiri"  required><label><img src="/SIJAUKL/user/img/mandiri.jpg" alt="mandiri"></label>
+            <input type="radio" id="metode_pembayaran" name="metode_pembayaran" value="ovo" required><label><img src="/SIJAUKL/user/img/ovo.jpg" alt="ovo"></label>
+        </div>
     <br>
         <input type="submit" value="Pesan" name="submit">
     </form>

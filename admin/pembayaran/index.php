@@ -7,7 +7,7 @@ include '../../koneksi.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Admin</title>
-    <link rel = "stylesheet" href ="penjadwalan.css">
+    <link rel = "stylesheet" href ="pembayaran.css">
 </head>
 <body>
 <header>
@@ -25,28 +25,25 @@ include '../../koneksi.php';
 </header>
 <br>
 <br>
-<center><h1>Data Penjadwalan</h1><center>
+<center><h1>Data Transaksi</h1><center>
     <table>
       <thead>
         <tr>
           <th>No</th>
           <th>Nama</th>
-          <th>hari</th>
-          <th>Waktu</th>
-          <th>Alamat</th>
-          <th>Jumlah</th>
-          <th>Tanggal Penjadwalan</th>
+          <th>Produk</th>
+          <th>Tanggal Pesan</th>
+          <th>Bukti Pembayaran</th>
           <th>Status</th>
-          <th>Catatan</th>
-          <th>Action</th>
         </tr>
     </thead>
     <tbody>
 	<?php
     include '../../koneksi.php';
-    $query_mysql = mysqli_query($conn, "SELECT penjadwalan.IDpenjadwalan, penjadwalan.alamat, penjadwalan.jumlah, user.email, jadwal.IDjadwal, jadwal.hari, jadwal.waktu, penjadwalan.status, penjadwalan.tanggal, penjadwalan.catatan FROM(( penjadwalan
-    JOIN jadwal ON penjadwalan.IDjadwal = jadwal.IDjadwal) 
-    JOIN user ON penjadwalan.ID=user.ID);
+    $query_mysql = mysqli_query($conn, "SELECT pembayaran.IDtransaksi, produk.nama_produk, user.email, pesanan.tanggal, pesanan.status, pembayaran.bukti_pembayaran FROM(( pembayaran
+    JOIN produk ON pembayaran.IDproduk=produk.IDproduk
+    JOIN pesanan ON pembayaran.IDpesanan=pesanan.IDpesanan) 
+    JOIN user ON pembayaran.ID=user.ID);
     ") or die(mysqli_error($conn));
     $nomor = 1;
     while($data = mysqli_fetch_array($query_mysql)) { 
@@ -54,18 +51,10 @@ include '../../koneksi.php';
         <tr>
         <td><?php echo $nomor++; ?></td>
         <td><?php echo $data['email']; ?></td>
-        <td><?php echo $data['hari']; ?></td>
-        <td><?php echo $data['waktu']; ?></td>
-        <td><?php echo $data['alamat']; ?></td>
-        <td><?php echo $data['jumlah']; ?></td>
+        <td><?php echo $data['nama_produk']; ?></td>
         <td><?php echo $data['tanggal']; ?></td>
+        <td style="text-align: center;"><img src="img_bukti/<?php echo $data['bukti_pembayaran']; ?>" style="width: 100px  ;"></td>
         <td><?php echo $data['status']; ?></td>
-        <td><?php echo $data['catatan']; ?></td>
-        <td>
-        <div class="action-buttons">
-            <a href="edit_penjadwalan.php?id=<?php echo $data['IDpenjadwalan']; ?>" class="btn-edit">Edit</a>
-        </div>
-        </td>   
     </tr>
         <?php } ?>
     </tbody>

@@ -14,10 +14,11 @@
     <a href="/SIJAUKL/admin/jadwal/index.php">Jadwal</a>
     <a href="/SIJAUKL/admin/penjadwalan/index.php">Penjadwalan</a>
     <a href="/SIJAUKL/admin/pengambilan/index.php">Pengambilan</a>
-    <a href="/SIJAUKL/admin/transaksi_produk/index.php">Transaksi Produk</a>
+    <a href="/SIJAUKL/admin/transaksi_produk/index.php">Pesanan</a>
+    <a href="/SIJAUKL/admin/pembayaran/index.php">Transaksi</a>
     <a href="/SIJAUKL/admin/rating_produk/index.php">Rating Produk</a>
     <a href="/SIJAUKL/admin/rating_pengelola/index.php">Rating Olah</a>
-    </nav>
+</nav>
 </header>
 <br>
 <br>
@@ -33,7 +34,6 @@
           <th>Foto Bukti</th>
           <th>Tanggal ambil</th>
           <th>Status</th>
-          <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -60,10 +60,6 @@ while($data = mysqli_fetch_array($query_mysql)) {
 </td>
     <td><?php echo $data['tanggal_diambil']; ?></td>
     <td><?php echo $data['status']; ?></td>
-    <td>
-        <a href="edit_jadwal.php?id=<?php echo $data['IDpengambilan']; ?>" class="btn-edit">Edit</a>
-        <a href="hapus_jadwal.php?id=<?php echo $data['IDpengambilan']; ?>" class="btn-delete" onClick="return confirm('Apakah anda yakin ingin menghapus data tersebut???')">Hapus</a>
-    </td>
 </tr>
 <?php } ?>
 

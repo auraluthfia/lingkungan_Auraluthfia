@@ -17,14 +17,15 @@ include '../../koneksi.php';
     <a href="/SIJAUKL/admin/jadwal/index.php">Jadwal</a>
     <a href="/SIJAUKL/admin/penjadwalan/index.php">Penjadwalan</a>
     <a href="/SIJAUKL/admin/pengambilan/index.php">Pengambilan</a>
-    <a href="/SIJAUKL/admin/transaksi_produk/index.php">Transaksi Produk</a>
+    <a href="/SIJAUKL/admin/transaksi_produk/index.php">Pesanan</a>
+    <a href="/SIJAUKL/admin/pembayaran/index.php">Transaksi</a>
     <a href="/SIJAUKL/admin/rating_produk/index.php">Rating Produk</a>
     <a href="/SIJAUKL/admin/rating_pengelola/index.php">Rating Olah</a>
     </nav>
 </header>
 <br>
 <br>
-<center><h1>Data Transaksi</h1><center>
+<center><h1>Data Pesanan</h1><center>
     <table>
       <thead>
         <tr>
@@ -42,7 +43,7 @@ include '../../koneksi.php';
     <tbody>
 	<?php
     include '../../koneksi.php';
-    $query_mysql = mysqli_query($conn, "SELECT pesanan.IDpesanan, produk.nama_produk, pesanan.total, user.email, pesanan.jumlah, pesanan.tanggal, pesanan.status, pesanan.metode_pengiriman FROM(( pesanan
+    $query_mysql = mysqli_query($conn, "SELECT pesanan.IDpesanan, produk.nama_produk, pesanan.total, user.email, pesanan.jumlah, pesanan.tanggal, pesanan.status, pesanan.metode_pembayaran FROM(( pesanan
     JOIN produk ON pesanan.IDproduk=produk.IDproduk) 
     JOIN user ON pesanan.ID=user.ID);
     ") or die(mysqli_error($conn));
@@ -57,11 +58,10 @@ include '../../koneksi.php';
         <td><?php echo $data['jumlah']; ?></td>
         <td><?php echo number_format($data['total'],0,',','.'); ?></td>
         <td><?php echo $data['status']; ?></td>
-        <td><?php echo $data['metode_pengiriman']?></td>
+        <td><?php echo $data['metode_pembayaran']?></td>
        <td>
   <div class="action-buttons">
     <a href="edit_transaksi.php?id=<?= $data['IDpesanan']; ?>" class="btn-edit">Edit</a>
-    <a href="proses_hapus.php?id=<?= $data['IDpesanan']; ?>" class="btn-delete" onclick="return confirm('Yakin hapus?')">Hapus</a>
   </div>
 </td>
   

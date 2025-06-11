@@ -17,7 +17,7 @@ $userData = mysqli_fetch_assoc($result);
 $IDuser = $userData['ID'];
 print_r($result);
 $query_produk = "
-    SELECT pesanan.IDpesanan, produk.nama_produk, pesanan.jumlah, pesanan.total,pesanan.tanggal, pesanan.status, pesanan.metode_pengiriman
+    SELECT pesanan.IDpesanan, produk.nama_produk, pesanan.jumlah, pesanan.total,pesanan.tanggal, pesanan.status, pesanan.metode_pembayaran
     FROM pesanan
     JOIN produk ON pesanan.IDproduk = produk.IDproduk
     WHERE pesanan.ID = '$IDuser'
@@ -96,7 +96,7 @@ ob_end_flush();
                     <p>Total Harga: <span>Rp " . number_format($row['total'], 0, ',', '.') . "</span></p>
                     <p>Tanggal: <span>{$row['tanggal']}</span></p>
                     <p>Status: <span>{$row['status']}</span></p>
-                    <p>Pengiriman: <span>{$row['metode_pengiriman']}</span></p>";
+                    <p>Pembayaran via: <span>{$row['metode_pembayaran']}</span></p>";
                 if ($row['status'] == 'pending') {
                     echo "<form method='POST' action=''>
                             <input type='hidden' name='IDpesanan' value='{$row['IDpesanan']}'>

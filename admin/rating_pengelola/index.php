@@ -11,16 +11,17 @@ include '../../koneksi.php';
 </head>
 <body>
 <header>
-    <nav class="navbar">
+<nav class="navbar">
     <a href="/SIJAUKL/admin/user/index.php">User</a>
     <a href="/SIJAUKL/admin/produk/index.php">Produk</a>
     <a href="/SIJAUKL/admin/jadwal/index.php">Jadwal</a>
     <a href="/SIJAUKL/admin/penjadwalan/index.php">Penjadwalan</a>
     <a href="/SIJAUKL/admin/pengambilan/index.php">Pengambilan</a>
-    <a href="/SIJAUKL/admin/transaksi_produk/index.php">Transaksi Produk</a>
+    <a href="/SIJAUKL/admin/transaksi_produk/index.php">Pesanan</a>
+    <a href="/SIJAUKL/admin/pembayaran/index.php">Transaksi</a>
     <a href="/SIJAUKL/admin/rating_produk/index.php">Rating Produk</a>
     <a href="/SIJAUKL/admin/rating_pengelola/index.php">Rating Olah</a>
-    </nav>
+</nav>
 </header>
 <br>
 <br>
